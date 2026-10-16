@@ -3,6 +3,7 @@ package com.multiaceites.config;
 import com.multiaceites.model.entity.*;
 import com.multiaceites.model.entity.Role;
 import com.multiaceites.repository.*;
+import com.multiaceites.service.SucursalService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,8 +14,9 @@ import java.math.BigDecimal;
 public class DataInitializer {
     @Bean
     CommandLineRunner seed(UserRepository users, ProductRepository products, ClientRepository clients,
-            PasswordEncoder enc) {
+            SucursalService sucursales, PasswordEncoder enc) {
         return args -> {
+            sucursales.empresa();
             if (users.count() == 0) {
                 User u = new User();
                 u.setUsername("admin");

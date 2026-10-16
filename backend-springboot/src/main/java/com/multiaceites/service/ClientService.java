@@ -4,18 +4,23 @@ import com.multiaceites.dto.ClientRequest;
 import com.multiaceites.exception.NotFoundException;
 import com.multiaceites.model.entity.Client;
 import com.multiaceites.repository.ClientRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-@RequiredArgsConstructor
 public class ClientService {
+
     private final ClientRepository repo;
 
-    public List<Client> all(String cedula) {
-        return cedula == null || cedula.isBlank() ? repo.findByActivoTrue()
-                : repo.findByActivoTrueAndCedulaContaining(cedula);
+    public ClientService(ClientRepository repo) {
+        this.repo = repo;
+    }
+
+    public List<Client> all(String query) {
+        String term = query == null ? "" : query.trim();
+        return term.isEmpty()
+                ? repo.findByActivoTrue()
+                : repo.findByActivoTrueAndCedulaContainingIgnoreCase(term);
     }
 
     public Client one(Long id) {
@@ -42,6 +47,7 @@ public class ClientService {
         c.setCedula(r.cedula());
         c.setCorreo(r.correo());
         c.setTelefono(r.telefono());
+        c.setDireccion(r.direccion());
     }
 
     public void delete(Long id) {

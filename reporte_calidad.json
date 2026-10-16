@@ -1,60 +1,65 @@
 {
     "proyecto": "MultiAceites",
-    "ruta": "C:\\Users\\cuthulu\\Desktop\\MultiAceites",
-    "fecha": "2026-10-05T08:16:36.979422",
+    "ruta": "C:\\Users\\cuthulu\\Desktop\\proyecto-CS\\MultiAceites",
+    "fecha": "2026-10-15T20:16:30.774489",
     "estandar_referencia": "ISO/IEC 25010",
     "lenguajes": {
+        "JSON": 4,
         "XML": 1,
-        "Java": 37,
+        "Java": 43,
         "HTML": 1,
-        "JSON": 2,
-        "JavaScript": 2,
+        "JavaScript": 20,
         "CSS": 1
     },
     "codigo": {
-        "archivos": 44,
-        "lineas_totales": 3704,
-        "lineas_codigo": 3431,
-        "lineas_comentarios": 33,
-        "funciones_aproximadas": 171,
-        "clases_aproximadas": 30
+        "archivos": 70,
+        "lineas_totales": 7794,
+        "lineas_codigo": 6892,
+        "lineas_comentarios": 57,
+        "funciones_aproximadas": 363,
+        "clases_aproximadas": 35
     },
     "complejidad": {
-        "complejidad_ciclomatica_aproximada": 192,
-        "decisiones": 191
+        "complejidad_ciclomatica_aproximada": 616,
+        "decisiones": 615
     },
     "seguridad": [
         {
-            "archivo": "C:\\Users\\cuthulu\\Desktop\\MultiAceites\\backend-springboot\\pom.xml",
+            "archivo": "C:\\Users\\cuthulu\\Desktop\\proyecto-CS\\MultiAceites\\backend-springboot\\pom.xml",
             "tipo": "HTTP no seguro",
             "cantidad": 3
         },
         {
-            "archivo": "C:\\Users\\cuthulu\\Desktop\\MultiAceites\\backend-springboot\\src\\main\\java\\com\\multiaceites\\config\\SecurityConfig.java",
+            "archivo": "C:\\Users\\cuthulu\\Desktop\\proyecto-CS\\MultiAceites\\backend-springboot\\src\\main\\java\\com\\multiaceites\\config\\SecurityConfig.java",
             "tipo": "HTTP no seguro",
             "cantidad": 1
         },
         {
-            "archivo": "C:\\Users\\cuthulu\\Desktop\\MultiAceites\\frontend-react\\src\\main.jsx",
+            "archivo": "C:\\Users\\cuthulu\\Desktop\\proyecto-CS\\MultiAceites\\frontend-react\\src\\pages\\Productos.jsx",
             "tipo": "SQL potencialmente inseguro",
-            "cantidad": 3
+            "cantidad": 1
         },
         {
-            "archivo": "C:\\Users\\cuthulu\\Desktop\\MultiAceites\\frontend-react\\src\\main.jsx",
+            "archivo": "C:\\Users\\cuthulu\\Desktop\\proyecto-CS\\MultiAceites\\frontend-react\\src\\pages\\Usuarios.jsx",
+            "tipo": "SQL potencialmente inseguro",
+            "cantidad": 1
+        },
+        {
+            "archivo": "C:\\Users\\cuthulu\\Desktop\\proyecto-CS\\MultiAceites\\frontend-react\\src\\services\\api.js",
             "tipo": "HTTP no seguro",
             "cantidad": 1
         }
     ],
     "dependencias": [
-        "C:\\Users\\cuthulu\\Desktop\\MultiAceites\\backend-springboot\\pom.xml",
-        "C:\\Users\\cuthulu\\Desktop\\MultiAceites\\frontend-react\\package.json"
+        "C:\\Users\\cuthulu\\Desktop\\proyecto-CS\\MultiAceites\\backend-springboot\\pom.xml",
+        "C:\\Users\\cuthulu\\Desktop\\proyecto-CS\\MultiAceites\\frontend-react\\package.json"
     ],
     "tests_detectados": [],
     "tests": [],
     "rendimiento": {
-        "tiempo_analisis_ms": 2.17,
-        "datos_analizados_mb": 0.117,
-        "velocidad_lectura_mb_s": 53.95
+        "tiempo_analisis_ms": 7.5,
+        "datos_analizados_mb": 0.243,
+        "velocidad_lectura_mb_s": 32.39
     },
     "portabilidad": {
         "sistema_operativo": "Windows",
@@ -64,15 +69,15 @@
     },
     "calidad": {
         "funcionalidad": 100,
-        "fiabilidad": 0,
+        "fiabilidad": 100,
         "rendimiento": 100,
-        "seguridad": 60,
+        "seguridad": 50,
         "mantenibilidad": 60.0,
         "usabilidad": 100,
         "portabilidad": 100,
-        "calidad_global": 73.0,
-        "densidad_hallazgos_seguridad": 1.166,
-        "complejidad_media": 1.12,
-        "duplicacion_lineas": 256
+        "calidad_global": 86.5,
+        "densidad_hallazgos_seguridad": 0.725,
+        "complejidad_media": 1.7,
+        "duplicacion_lineas": 672
     }
 }

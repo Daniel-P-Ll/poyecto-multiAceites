@@ -4,18 +4,26 @@ import com.multiaceites.dto.ProductRequest;
 import com.multiaceites.exception.NotFoundException;
 import com.multiaceites.model.entity.*;
 import com.multiaceites.repository.*;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import java.math.BigDecimal;
 import java.util.*;
 
 @Service
-@RequiredArgsConstructor
 public class ProductService {
+
     private final ProductRepository repo;
     private final PriceHistoryRepository history;
+    private final SucursalService sucursales;
+
+    public ProductService(ProductRepository repo, PriceHistoryRepository history, SucursalService sucursales) {
+        this.repo = repo;
+        this.history = history;
+        this.sucursales = sucursales;
+    }
 
     public List<Product> all(String q) {
-        return q == null || q.isBlank() ? repo.findByActivoTrue()
+        return q == null || q.isBlank()
+                ? repo.findByActivoTrue()
                 : repo.findByActivoTrueAndNombreContainingIgnoreCase(q);
     }
 
@@ -37,11 +45,16 @@ public class ProductService {
     }
 
     private void copy(Product p, ProductRequest r) {
+        BigDecimal tarifa = r.tarifaIva() != null ? r.tarifaIva() : sucursales.tarifaIvaVigente();
+        if (tarifa.compareTo(new BigDecimal("15.00")) != 0 && tarifa.compareTo(new BigDecimal("8.00")) != 0) {
+            throw new IllegalArgumentException("La tarifa IVA debe ser 15% u 8%");
+        }
         p.setNombre(r.nombre());
         p.setDescripcion(r.descripcion());
         p.setPrecio(r.precio());
         p.setStock(r.stock());
         p.setStockMinimo(r.stockMinimo());
+        p.setTarifaIva(tarifa);
     }
 
     public void delete(Long id) {

@@ -22,5 +22,7 @@ public record ProductRequest(
 
     @NotNull(message = "El stock mínimo es obligatorio")
     @Min(value = 5, message = "Alerta: El stock mínimo no puede ser inferior a 5 unidades")
-    Integer stockMinimo
+    Integer stockMinimo,
+
+    BigDecimal tarifaIva
 ) {}

@@ -2,7 +2,6 @@ package com.multiaceites.security;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,11 +9,17 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 @Component
-@RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
+
     private final JwtService jwt;
     private final UserDetailsServiceImpl users;
 
+    public JwtAuthenticationFilter(JwtService jwt, UserDetailsServiceImpl users) {
+        this.jwt = jwt;
+        this.users = users;
+    }
+
+    @Override
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
             throws ServletException, java.io.IOException {
         String h = req.getHeader("Authorization");
